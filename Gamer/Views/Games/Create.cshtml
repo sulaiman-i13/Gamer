@@ -1,0 +1,48 @@
+﻿@model CreateGameFormViewModel
+@{
+    ViewData["Title"] = "Add Game";
+}
+<h5>
+    <i class="bi bi-plus-circle-dotted"></i>
+    Add a new game
+</h5>
+<form asp-controller="Games" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="@Model.Name" class="form-label mt-4"></label>
+                <input asp-for="@Model.Name" class="form-control" placeholder="Name">
+                <span asp-validation-for="@Model.Name" class="form-text  text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.CategoryId"class="form-label mt-4"></label>
+                <select asp-for=@Model.CategoryId asp-items=@Model.Catergoris class="form-control">
+                    <option>Select Category</option>
+                </select>
+                <span asp-validation-for=@Model.CategoryId class="form-text  text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.SelectedDevices" class="form-label mt-4"></label>
+                <select asp-for=@Model.SelectedDevices asp-items=@Model.Devices class="form-control">
+                    <option>Select Devices</option>
+                </select>
+                <span asp-validation-for=@Model.SelectedDevices class="form-text  text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Description"class="form-label mt-4"></label>
+                <textarea asp-for="@Model.Description"class="form-control" placeholder="Description"></textarea>
+                <span asp-validation-for="@Model.Description"class="form-text text-danger "></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Cover" class="form-label mt-4"></label>
+                <input asp-for="@Model.Cover"class="form-control" />
+                <small>only .jpg, .jpeg, .png are allowed with max size 1MB</small>
+                <span asp-validation-for="@Model.Cover"class="form-text  text-danger d-block"></span>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-info mt-4">Save</button>
+            </div>
+        </div>   
+        <div class="col-md-6"></div>   
+     </div>
+</form>

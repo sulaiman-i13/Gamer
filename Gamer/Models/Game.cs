@@ -13,5 +13,6 @@ namespace Gamer.Models
         public string Cover { get; set; } = string.Empty;
         public int CategoryId { get; set; } = default!;
         public Category Category { get; set; } = default!;
+        public ICollection<GameDevice> Devices { get; set; } = default!;
     }
 }
