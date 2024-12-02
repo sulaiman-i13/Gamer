@@ -2,3 +2,4 @@
 global using Microsoft.EntityFrameworkCore;
 global using Gamer.Models;
 global using Gamer.ViewModels;
+global using Gamer.Settings;

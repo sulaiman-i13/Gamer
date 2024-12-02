@@ -1,19 +1,20 @@
 ﻿
 
+
+
 namespace Gamer.Services
 {
     public class GameService(AppDbContext context,
                     IWebHostEnvironment webHostEnvironment
                     ) : IGameService
     {
-        private readonly string imagesPath=$"{webHostEnvironment.WebRootPath}/assets/images/games";
+        private readonly string imagesPath=$"{webHostEnvironment.WebRootPath}{FileSettings.ImagePath}";
         public async Task CreateAsync(CreateGameFormViewModel viewModel)
         {
             var coverFullName = $"{Guid.NewGuid().ToString()}{Path.GetExtension(viewModel.Cover.FileName)}";
             var coverFullPath = Path.Combine(imagesPath, coverFullName);
             using var stream=File.Create(coverFullPath);
             await viewModel.Cover.CopyToAsync(stream);
-            stream.Dispose();
             var game = new Game
             {
                 Name = viewModel.Name,
